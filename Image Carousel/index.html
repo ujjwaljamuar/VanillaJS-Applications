@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            .carousel-container {
+                display: flex;
+                width: fit-content;
+                margin: auto;
+                gap: 1rem;
+            }
+
+            .carousel-arrow-prev,
+            .carousel-arrow-next {
+                height: 15rem;
+                display: grid;
+                place-items: center;
+                font-weight: 800;
+                font-size: 4rem;
+                cursor: pointer;
+            }
+
+            .carousel-wrapper {
+                display: flex;
+                gap: 4rem;
+                width: 55vw;
+                height: fit-content;
+                overflow-x: hidden;
+                padding: 1rem;
+                scroll-behavior: smooth;
+            }
+
+            .carousel-card {
+                width: 15rem;
+                height: 15rem;
+                display: flex;
+                flex-direction: column;
+                box-shadow: 1px 1px 4px 1px rgba(0, 0, 0);
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .carousel-card > img {
+                width: 15rem;
+                height: 12rem;
+            }
+
+            .carousel-card-text {
+                height: 100%;
+                display: grid;
+                place-items: center;
+            }
+
+            .carousel-card-text > * {
+                height: fit-content;
+                padding: 0;
+                margin: 0;
+                text-align: center;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="carousel-container">
+            <div class="carousel-arrow-prev">&#8249;</div>
+            <div class="carousel-wrapper">
+                <div class="carousel-card">
+                    <img src="1.png" />
+                    <div class="carousel-card-text">
+                        <h4>On-boarding Courses</h4>
+                    </div>
+                </div>
+
+                <div class="carousel-card">
+                    <img src="2.png" />
+                    <div class="carousel-card-text">
+                        <h4>Evaluations</h4>
+                    </div>
+                </div>
+
+                <div class="carousel-card">
+                    <img src="3.png" />
+                    <div class="carousel-card-text">
+                        <h4>Project-based internships</h4>
+                    </div>
+                </div>
+
+                <div class="carousel-card">
+                    <img src="1.png" />
+                    <div class="carousel-card-text">
+                        <h4>Internships</h4>
+                    </div>
+                </div>
+
+                <div class="carousel-card">
+                    <img src="2.png" />
+                    <div class="carousel-card-text">
+                        <h4>Job Opportunities</h4>
+                    </div>
+                </div>
+
+                <div class="carousel-card">
+                    <img src="3.png" />
+                    <div class="carousel-card-text">
+                        <h4>Returnships</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-arrow-next">&#8250;</div>
+        </div>
+        <script>
+            const carousel = document.querySelector(".carousel-wrapper");
+            const slides = document.querySelectorAll(".carousel-card");
+            const prev_arrow = document.querySelector(".carousel-arrow-prev");
+            const next_arrow = document.querySelector(".carousel-arrow-next");
+            const skip_by_slides = parseInt(
+                carousel.clientWidth / slides[0].clientWidth
+            );
+            next_arrow.addEventListener("click", () => {
+                carousel.scrollLeft +=
+                    (slides[0].clientWidth + 4 * 16) * skip_by_slides;
+            });
+            prev_arrow.addEventListener("click", () => {
+                carousel.scrollLeft -=
+                    (slides[0].clientWidth + 4 * 16) * skip_by_slides;
+            });
+        </script>
+    </body>
+</html>
